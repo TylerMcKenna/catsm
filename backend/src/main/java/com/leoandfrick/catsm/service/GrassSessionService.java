@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.leoandfrick.catsm.repository.GrassSessionRepository;
 
+import java.util.List;
+
 @Service
 public class GrassSessionService {
 
@@ -14,5 +16,9 @@ public class GrassSessionService {
 
     public GrassSession addGrassSession(GrassSession grassSession) {
         return repository.save(grassSession);
+    }
+
+    public List<GrassSession> getAllGrassSessions() {
+        return repository.findAll();
     }
 }

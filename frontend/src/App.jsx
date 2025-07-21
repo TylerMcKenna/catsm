@@ -3,7 +3,7 @@ import Post from "./components/post.jsx"
 const posts = [
     {
         "id": "1",
-        "startTime": "2025-07-11T17:50:13",
+        "startTime": "2025-07-11T01:50:13",
         "endTime": "2025-07-11T18:03:49",
         "comments": "So much grass"
     },
@@ -22,8 +22,7 @@ const posts = [
 ]
 
 export default function App() {
-    const postList = posts.map(post => <Post post={post}/>);
-    console.log("App function ran!");
+    const postList = posts.map(post => <Post post={post} key={post.id}/>);
 
     return (
         <ul>{postList}</ul>

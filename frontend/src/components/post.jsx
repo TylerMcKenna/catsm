@@ -1,13 +1,18 @@
 export default function Post({ post }) {
-    const startTime = new Date(post.startTime);
-    const formattedStartTime = `${startTime.toLocaleDateString()} ${startTime.getHours()}:${startTime.getMinutes()}`;
-    const endTime = new Date(post.endTime);
-    const formattedEndTime = `${endTime.toLocaleDateString()} ${endTime.getHours()}:${endTime.getMinutes()}`;
+    const formatDateTime = (time) => {
+        const minutes = time.getMinutes();
+        const hours = time.getHours()
+        const zeroPaddedMinutes = minutes < 10 ? '0' + minutes.toString() : minutes;
+        const timePeriod = hours < 12 ? 'AM' : 'PM'; 
+        const timeAdjustedHours = hours % 12 === 0 ? 12 : hours % 12;
 
+        return `${time.toLocaleDateString()} ${timeAdjustedHours}:${zeroPaddedMinutes} ${timePeriod}`;  
+    }
+    
     return (
         <li>
-            <p>Start: {formattedStartTime}</p>
-            <p>End: {formattedEndTime}</p>
+            <p>Start: {formatDateTime(new Date(post.startTime))}</p>
+            <p>End: {formatDateTime(new Date(post.endTime))}</p>
             <p>Comments: {post.comments}</p>
         </li>
     );

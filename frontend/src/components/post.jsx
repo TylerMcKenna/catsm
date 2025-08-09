@@ -1,3 +1,5 @@
+import "../css/post.css";
+
 export default function Post({ post }) {
     const formatDateTime = (time) => {
         const minutes = time.getMinutes();
@@ -11,9 +13,11 @@ export default function Post({ post }) {
     
     return (
         <li>
-            <p>Start: {formatDateTime(new Date(post.startTime))}</p>
-            <p>End: {formatDateTime(new Date(post.endTime))}</p>
-            <p>Comments: {post.comments}</p>
+            <div className="times">
+                <p className="startTime">Start: {formatDateTime(new Date(post.startTime))}</p>
+                <p className="endTime">End: {formatDateTime(new Date(post.endTime))}</p>
+            </div>
+            <p className="comments">Comments: {post.comments}</p>
         </li>
     );
 }

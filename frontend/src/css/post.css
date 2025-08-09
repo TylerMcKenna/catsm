@@ -1,0 +1,17 @@
+li {
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 33vw;
+}
+
+.times {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments {
+    align-self: center;
+}

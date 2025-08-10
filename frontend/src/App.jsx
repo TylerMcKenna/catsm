@@ -1,27 +1,17 @@
-import Post from "./components/post.jsx"
-
-const posts = [
-    {
-        "id": "1",
-        "startTime": "2025-07-11T01:50:13",
-        "endTime": "2025-07-11T18:03:49",
-        "comments": "So much grass"
-    },
-    {
-        "id": "2",
-        "startTime": "2025-07-12T17:50:13",
-        "endTime": "2025-07-12T18:03:49",
-        "comments": "A concerning amount of grass"
-    },
-    {
-        "id": "3",
-        "startTime": "2025-07-12T12:00:00",
-        "endTime": "2025-07-13T18:03:49",
-        "comments": "TOO much grass"
-    }
-]
+import Post from './components/post.jsx'
+import { useEffect, useState} from 'react';
 
 export default function App() {
+    const [posts, setPosts] = useState([]);
+    
+    useEffect(() => {
+        fetch('http://localhost:8080/grassSessions')
+        .then(res => res.json())
+        .then(data => setPosts(data))
+        .catch(err => console.log(err.message));
+    }, []);
+
+    // console.log(posts);
     const postList = posts.map(post => <Post post={post} key={post.id}/>);
 
     return (
